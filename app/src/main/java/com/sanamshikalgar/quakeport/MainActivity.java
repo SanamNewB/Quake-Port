@@ -23,29 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*// STEP 3 Creating new earthquake objects calling the constructor
-        // [public EachQuakeInfo (float magnitude, String city, String mmddyyyy] from 'EachQuakeInfo'.
-        // Now after this, instead of using an ArrayList<String> ; I can make a list of objects of data type EachQuakeInfo
-        ArrayList<EachQuakeInfo> eachQuake = new ArrayList<>();
-
-        eachQuake.add(new EachQuakeInfo("1.1","San Francisco","June 01, 2018"));
-        eachQuake.add(new EachQuakeInfo("2.2","London","June 02, 2018"));
-        eachQuake.add(new EachQuakeInfo("3.3","Delhi","June 03, 2018"));
-        eachQuake.add(new EachQuakeInfo("4.4","Tokyo","June 04, 2018"));
-        eachQuake.add(new EachQuakeInfo("5.5","Tokyo","June 04, 2018"));
-
-        //eachQuake.add(new EachQuakeInfo((float) 5.5,"Rio","June 05, 2018"));*/
-
-        //final ArrayList<EachQuakeInfo> eachQuake = JSONdata.extractEarthquakes();
-
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.earthquake_activity_list);
 
-        // STEP 4 CREATING  a new {@link ArrayAdapter} of earthquakes which
-        // is customized to display a list of earthquakes. Create a custom adapter class that takes in
-        // the eachQuake list as data input.
-
-        // final EarthquakeAdapter EA_CC = new EarthquakeAdapter(this, eachQuake);
         mEA_CC = new EarthquakeAdapter(this, new ArrayList<EachQuakeInfo>());
 
         // Set the adapter on the {@link ListView}
@@ -76,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             if (urls.length < 1 || urls[0] == null) {
                 return null;
             }
-//Event result = Utils.fetchEarthquakeData(USGS_REQUEST_URL); // this is hardcoding to access data from only the specified URL
+            
             List<EachQuakeInfo> result = JSONdata.extractEarthquakes(urls[0]); // this is for accessing the 0th element of any URL so QuakeAsyn can work for any String URL
             return result;
         }
